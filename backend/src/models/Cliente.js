@@ -14,6 +14,8 @@ const Cliente = sequelize.define("Cliente",{
     telefone: DataTypes.STRING(20),
     email: DataTypes.STRING(150),
     endereco: DataTypes.STRING(255)
+},{
+    tableName: "Cliente"
 });
 
 export default Cliente;
