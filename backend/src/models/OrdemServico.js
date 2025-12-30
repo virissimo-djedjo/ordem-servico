@@ -31,7 +31,8 @@ const OrdemServico = sequelize.define("OrdemServico",{
      },
      
 },{
-    tableName: "OrdemServico"
+    tableName: "OrdemServico",
+    timestamps: false
 });
 
 export default OrdemServico;
