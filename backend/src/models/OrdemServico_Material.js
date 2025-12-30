@@ -20,6 +20,7 @@ const OrdemServico_Material = sequelize.define("OrdemServico_Material", {
     }
 }, {
     tableName: 'OrdemServico_Material',
+    timestamps: false
 });
 
 export default OrdemServico_Material;
