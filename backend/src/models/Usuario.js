@@ -30,7 +30,8 @@ const Usuario = sequelize.define("Usuario",{
         defaultValue: "ATIVO"
     },  
 },{
-    tableName: "Usuario"
+    tableName: "Usuario",
+    timestamps: false
 });
 
 export default Usuario;
