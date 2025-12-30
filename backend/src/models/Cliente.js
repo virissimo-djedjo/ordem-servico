@@ -15,7 +15,8 @@ const Cliente = sequelize.define("Cliente",{
     email: DataTypes.STRING(150),
     endereco: DataTypes.STRING(255)
 },{
-    tableName: "Cliente"
+    tableName: "Cliente",
+    timestamps: false
 });
 
 export default Cliente;
