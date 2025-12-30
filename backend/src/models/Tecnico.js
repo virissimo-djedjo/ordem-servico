@@ -12,7 +12,8 @@ const Tecnico = sequelize.define("Tecnico",{
         allowNull: false
     }
 },{
-    tableName: "Tecnico"
+    tableName: "Tecnico",
+    timestamps: false
 });
 
 export default Tecnico;
