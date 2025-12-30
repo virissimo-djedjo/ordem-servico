@@ -22,6 +22,7 @@ const Historico = sequelize.define("Historico", {
     },
 }, {
     tableName: 'Historico',
+    timestamps: false
 });
 
 export default Historico;
