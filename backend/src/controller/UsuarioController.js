@@ -1,5 +1,5 @@
 import Usuario from "../models/Usuario.js"
-import brypt from "bcryptjs"
+import bcrypt from "bcryptjs"
 
 class UsuarioController{
     listar = async(req, res)=>{
@@ -48,7 +48,7 @@ class UsuarioController{
                 return res.status(400).json({ erro: "Login já existe" });
             }
             
-            const senhaHash = await brypt.hash(senha, 10);
+            const senhaHash = await bcrypt.hash(senha, 10);
             const novoUsuario = await Usuario.create({
                 nome,
                 login,
@@ -66,7 +66,8 @@ class UsuarioController{
             });
 
         } catch (error) {
-            return res.status(500).json({ erro: "Erro ao criar usuário" });
+            console.error("ERRO NO BANCO", error)
+            return res.status(500).json({ erro: "Erro ao criar usuário", detalhes: error.message });
         }
     }
 
@@ -80,9 +81,9 @@ class UsuarioController{
             if(!usuario){
                 return res.status(404).json({ erro: "Usuário não encontrado" });
             }
-            const senhaAtualizada = usuario.senha; //capturar senha do banco de dados
+            let senhaAtualizada = usuario.senha; //capturar senha do banco de dados
             if(senha){
-                senhaAtualizada = await brypt.hash(senha, 10)
+                senhaAtualizada = await bcrypt.hash(senha, 10)
             }
              await usuario.update({
                 nome,

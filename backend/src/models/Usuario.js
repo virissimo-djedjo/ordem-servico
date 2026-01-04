@@ -17,7 +17,7 @@ const Usuario = sequelize.define("Usuario",{
         unique: true
     },
     senha:{
-        type: DataTypes.STRING(20),
+        type: DataTypes.STRING(255),
         allowNull: false
     },
     perfil:{
