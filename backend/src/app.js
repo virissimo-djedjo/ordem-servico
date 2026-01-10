@@ -8,7 +8,6 @@ app.use(express.json());
 app.use(Clienterouter);
 app.use(UsuarioRouter);
 
-
 app.get("/", (req, res) => {
   res.json({ message: "API Ordem de Serviço funcionando 🚀" });
 });
