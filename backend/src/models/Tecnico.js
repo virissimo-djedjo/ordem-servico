@@ -7,7 +7,7 @@ const Tecnico = sequelize.define("Tecnico",{
         autoIncrement: true,
         primaryKey: true
     },
-    especialidadde:{
+    especialidade:{
         type: DataTypes.STRING(100),
         allowNull: false
     }
