@@ -4,7 +4,7 @@ import dotenv from "dotenv"
 dotenv.config()
 
 const PORT = process.env.PORT || 3333;
-
+ 
 async function startServer() {
   try {
     await sequelize.authenticate();

@@ -3,22 +3,32 @@ import Cliente from "../models/Cliente.js";
 import Tecnico from "../models/Tecnico.js";
 import Historico from "../models/Historico.js";
 
+
+
 class OrdemServicoController {
   // LISTAR (ADMIN vê tudo / TECNICO só dele)
   async listar(req, res) {
-    try {
-      let filtro = {};
+  try {
+    let filtro = {};
 
-      if (req.usuarioPerfil === "TECNICO") {
-        filtro.id_tecnico = req.usuarioId;
+    if (req.usuarioPerfil === "TECNICO") {
+      const tecnico = await Tecnico.findOne({
+        where: { id_usuario: req.usuarioId }
+      });
+
+      if (!tecnico) {
+        return res.status(403).json({ erro: "Técnico não vinculado" });
       }
 
-      const ordens = await OrdemServico.findAll({ where: filtro });
-      return res.json(ordens);
-    } catch (error) {
-      return res.status(500).json({ erro: "Erro ao listar ordens" });
+      filtro.id_tecnico = tecnico.id_tecnico; // ✅ CERTO
     }
+
+    const ordens = await OrdemServico.findAll({ where: filtro });
+    return res.json(ordens);
+  } catch (error) {
+    return res.status(500).json({ erro: "Erro ao listar ordens" });
   }
+}
 
   // CRIAR
   async criar(req, res) {
